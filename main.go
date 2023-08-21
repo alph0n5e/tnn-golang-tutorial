@@ -4,35 +4,41 @@ import "fmt"
 
 func main() {
 
-	// strings
-	var nameOne string = "alph0n5e"
-	var nameTwo = "me"
-	var nameThree string
-	fmt.Println(nameOne, nameTwo, nameThree)
+	// Arrays
 
-	nameThree = "you"
-	nameTwo = "us"
-	fmt.Println(nameOne, nameTwo, nameThree)
+	var ages [3]int = [3]int{20, 25, 30}
+	names := [4]string{"Yoshi", "Mario", "Peach", "Bowser"}
+	fmt.Println(ages, len(ages))
+	fmt.Println(names, len(names))
 
-	nameFour := "them"
-	fmt.Println(nameFour)
+	names[1] = "Luigi"
+	fmt.Println(names, len(names))
 
-	// integers
-	var ageOne int = 30
-	var ageTwo = 31
-	ageThree := 32
-	fmt.Println(ageOne, ageTwo, ageThree)
+	// Slices
 
-	// bits & memory
-	var numOne int8 = 25
-	var numTwo int8 = -128
-	var numThree uint8 = 255
-	fmt.Println(numOne, numTwo, numThree)
+	var scores = []int{100, 50, 60}
 
-	// floats
-	var scoreOne float32 = -1.125
-	var scoreTwo float64 = 987654332123456.54
+	fmt.Println(scores, len(scores))
 
-	fmt.Println(scoreOne, scoreTwo)
+	scores[2] = 25
+	fmt.Println(scores, len(scores))
 
+	scores = append(scores, 85)
+	fmt.Println(scores, len(scores))
+
+	// Slice ranges
+
+	rangeOne := names[1:3]
+	rangeTwo := names[1:]
+	rangeThree := names[:3]
+	fmt.Println(rangeOne)
+	fmt.Println(rangeTwo)
+	fmt.Println(rangeThree)
+
+	rangeOne = append(rangeOne, "Waluigi") // Will append to 'names' as well
+	fmt.Println(rangeOne)
+
+	rangeTwo = append(rangeTwo, rangeThree...)
+	fmt.Println(rangeTwo)
+	fmt.Println(names)
 }
