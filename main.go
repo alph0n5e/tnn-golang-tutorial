@@ -2,26 +2,19 @@ package main
 
 import "fmt"
 
-func updateName(x string) {
-	x = "wedge"
-}
-
-func updateMenu(m map[string]float32) {
-	m["tea"] = 2.5
+func updateName(x *string) {
+	*x = "wedge"
 }
 
 func main() {
-	// Non-pointer values
+	// Pointers
 	name := "alph0n5e"
-	updateName(name)
-	fmt.Println(name)
+	m := &name
 
-	// Pointer wrapper values
-	menu := map[string]float32{
-		"coffee": 1.99,
-		"pie":    4.99,
-	}
-	fmt.Println(menu)
-	updateMenu(menu)
-	fmt.Println(menu)
+	fmt.Println("Memory address of 'name': ", m)
+	fmt.Println("Value at memory address: ", *m)
+
+	fmt.Println(name)
+	updateName(m)
+	fmt.Println(name)
 }
