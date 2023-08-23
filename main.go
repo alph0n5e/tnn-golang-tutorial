@@ -2,28 +2,26 @@ package main
 
 import "fmt"
 
+func updateName(x string) {
+	x = "wedge"
+}
+
+func updateMenu(m map[string]float32) {
+	m["tea"] = 2.5
+}
+
 func main() {
-	menu := map[string]float64{
-		"soup":  4.99,
-		"pie":   7.99,
-		"salad": 6.99,
-	}
+	// Non-pointer values
+	name := "alph0n5e"
+	updateName(name)
+	fmt.Println(name)
 
+	// Pointer wrapper values
+	menu := map[string]float32{
+		"coffee": 1.99,
+		"pie":    4.99,
+	}
 	fmt.Println(menu)
-	fmt.Println(menu["pie"])
-	for k, v := range menu {
-		fmt.Printf("menu[\"%v\"] = %v\n", k, v)
-	}
-
-	phonebook := map[int]string{
-		234567: "mario",
-		123456: "luigi",
-		345678: "peach",
-	}
-
-	fmt.Println(phonebook)
-	fmt.Println(phonebook[123456])
-
-	phonebook[123456] = "bowser"
-	fmt.Println(phonebook)
+	updateMenu(menu)
+	fmt.Println(menu)
 }
