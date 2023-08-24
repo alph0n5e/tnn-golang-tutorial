@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 type bill struct {
@@ -56,8 +57,9 @@ func (b *bill) addItem(name string, price float32) {
 
 // Save bill
 func (b *bill) save() {
+	fileName := strings.ReplaceAll(b.name, " ", "-")
 	data := []byte(b.format())
-	err := os.WriteFile("bills/"+b.name+".txt", data, 0644)
+	err := os.WriteFile("bills/"+fileName+".txt", data, 0644)
 	if err != nil {
 		panic(err)
 	}

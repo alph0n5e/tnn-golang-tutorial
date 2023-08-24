@@ -14,10 +14,20 @@ func getInput(prompt string, r *bufio.Reader) (string, error) {
 	return strings.TrimSpace(input), err
 }
 
-func createBill() bill {
+func promptName() string {
 	reader := bufio.NewReader(os.Stdin)
-
 	name, _ := getInput("Create a new bill name: ", reader)
+	name = strings.TrimSpace(name)
+	return name
+}
+
+func createBill() bill {
+	name := promptName()
+
+	if name == "" {
+		fmt.Println("Bill name cannot be empty!")
+		name = promptName()
+	}
 
 	b := newBill(name)
 	fmt.Println("Created the bill - ", b.name)

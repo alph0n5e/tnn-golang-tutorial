@@ -1,3 +1,3 @@
-module alph0n5e/tnn-golang
+module alph0n5e/bill
 
 go 1.21
